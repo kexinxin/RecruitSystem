@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.QuestionDao">
+	<resultMap id="BaseResultMap" type="com.kexinxin.bean.Question">
+		<id column="question_id" jdbcType="INTEGER" property="questionId" />
+		<result column="cate_id" jdbcType="INTEGER" property="cateId" />
+		<result column="cate_name" jdbcType="VARCHAR" property="cateName" />
+		<result column="skill_id" jdbcType="INTEGER" property="skillId" />
+		<result column="skill_name" jdbcType="VARCHAR" property="skillName" />
+		<result column="question_title" jdbcType="VARCHAR" property="questionTitle" />
+		<result column="question_difficulty" jdbcType="INTEGER"
+			property="questionDifficulty" />
+		<result column="question_collect" jdbcType="INTEGER" property="questionCollect" />
+		<result column="question_answer" jdbcType="VARCHAR" property="questionAnswer" />
+		<result column="A" jdbcType="VARCHAR" property="a" />
+		<result column="B" jdbcType="VARCHAR" property="b" />
+		<result column="C" jdbcType="VARCHAR" property="c" />
+		<result column="D" jdbcType="VARCHAR" property="d" />
+		<result column="question_content" jdbcType="VARCHAR" property="questionContent" />
+		<result column="attr1" jdbcType="VARCHAR" property="attr1" />
+		<result column="attr2" jdbcType="VARCHAR" property="attr2" />
+		<result column="attr3" jdbcType="VARCHAR" property="attr3" />
+		<result column="attr4" jdbcType="VARCHAR" property="attr4" />
+		<result column="attr5" jdbcType="VARCHAR" property="attr5" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		question_id, cate_id, cate_name, skill_id, skill_name, question_title,
+		question_difficulty,
+		question_collect, question_answer, A, B, C, D, question_content, attr1, attr2, attr3,
+		attr4, attr5
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from question
+		where question_id = #{questionId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from question
+		where question_id = #{questionId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.kexinxin.bean.Question">
+		insert into question (question_id, cate_id, cate_name,
+		skill_id, skill_name, question_title,
+		question_difficulty, question_collect, question_answer,
+		A, B, C, D,
+		question_content, attr1, attr2,
+		attr3, attr4, attr5
+		)
+		values (#{questionId,jdbcType=INTEGER}, #{cateId,jdbcType=INTEGER},
+		#{cateName,jdbcType=VARCHAR},
+		#{skillId,jdbcType=INTEGER}, #{skillName,jdbcType=VARCHAR}, #{questionTitle,jdbcType=VARCHAR},
+		#{questionDifficulty,jdbcType=INTEGER},
+		#{questionCollect,jdbcType=INTEGER},
+		#{questionAnswer,jdbcType=VARCHAR},
+		#{a,jdbcType=VARCHAR}, #{b,jdbcType=VARCHAR}, #{c,jdbcType=VARCHAR}, #{d,jdbcType=VARCHAR},
+		#{questionContent,jdbcType=VARCHAR}, #{attr1,jdbcType=VARCHAR},
+		#{attr2,jdbcType=VARCHAR},
+		#{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR}, #{attr5,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.kexinxin.bean.Question">
+		insert into question
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="questionId != null">
+				question_id,
+			</if>
+			<if test="cateId != null">
+				cate_id,
+			</if>
+			<if test="cateName != null">
+				cate_name,
+			</if>
+			<if test="skillId != null">
+				skill_id,
+			</if>
+			<if test="skillName != null">
+				skill_name,
+			</if>
+			<if test="questionTitle != null">
+				question_title,
+			</if>
+			<if test="questionDifficulty != null">
+				question_difficulty,
+			</if>
+			<if test="questionCollect != null">
+				question_collect,
+			</if>
+			<if test="questionAnswer != null">
+				question_answer,
+			</if>
+			<if test="a != null">
+				A,
+			</if>
+			<if test="b != null">
+				B,
+			</if>
+			<if test="c != null">
+				C,
+			</if>
+			<if test="d != null">
+				D,
+			</if>
+			<if test="questionContent != null">
+				question_content,
+			</if>
+			<if test="attr1 != null">
+				attr1,
+			</if>
+			<if test="attr2 != null">
+				attr2,
+			</if>
+			<if test="attr3 != null">
+				attr3,
+			</if>
+			<if test="attr4 != null">
+				attr4,
+			</if>
+			<if test="attr5 != null">
+				attr5,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="questionId != null">
+				#{questionId,jdbcType=INTEGER},
+			</if>
+			<if test="cateId != null">
+				#{cateId,jdbcType=INTEGER},
+			</if>
+			<if test="cateName != null">
+				#{cateName,jdbcType=VARCHAR},
+			</if>
+			<if test="skillId != null">
+				#{skillId,jdbcType=INTEGER},
+			</if>
+			<if test="skillName != null">
+				#{skillName,jdbcType=VARCHAR},
+			</if>
+			<if test="questionTitle != null">
+				#{questionTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="questionDifficulty != null">
+				#{questionDifficulty,jdbcType=INTEGER},
+			</if>
+			<if test="questionCollect != null">
+				#{questionCollect,jdbcType=INTEGER},
+			</if>
+			<if test="questionAnswer != null">
+				#{questionAnswer,jdbcType=VARCHAR},
+			</if>
+			<if test="a != null">
+				#{a,jdbcType=VARCHAR},
+			</if>
+			<if test="b != null">
+				#{b,jdbcType=VARCHAR},
+			</if>
+			<if test="c != null">
+				#{c,jdbcType=VARCHAR},
+			</if>
+			<if test="d != null">
+				#{d,jdbcType=VARCHAR},
+			</if>
+			<if test="questionContent != null">
+				#{questionContent,jdbcType=VARCHAR},
+			</if>
+			<if test="attr1 != null">
+				#{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				#{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				#{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				#{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				#{attr5,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.Question">
+		update question
+		<set>
+			<if test="cateId != null">
+				cate_id = #{cateId,jdbcType=INTEGER},
+			</if>
+			<if test="cateName != null">
+				cate_name = #{cateName,jdbcType=VARCHAR},
+			</if>
+			<if test="skillId != null">
+				skill_id = #{skillId,jdbcType=INTEGER},
+			</if>
+			<if test="skillName != null">
+				skill_name = #{skillName,jdbcType=VARCHAR},
+			</if>
+			<if test="questionTitle != null">
+				question_title = #{questionTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="questionDifficulty != null">
+				question_difficulty = #{questionDifficulty,jdbcType=INTEGER},
+			</if>
+			<if test="questionCollect != null">
+				question_collect = #{questionCollect,jdbcType=INTEGER},
+			</if>
+			<if test="questionAnswer != null">
+				question_answer = #{questionAnswer,jdbcType=VARCHAR},
+			</if>
+			<if test="a != null">
+				A = #{a,jdbcType=VARCHAR},
+			</if>
+			<if test="b != null">
+				B = #{b,jdbcType=VARCHAR},
+			</if>
+			<if test="c != null">
+				C = #{c,jdbcType=VARCHAR},
+			</if>
+			<if test="d != null">
+				D = #{d,jdbcType=VARCHAR},
+			</if>
+			<if test="questionContent != null">
+				question_content = #{questionContent,jdbcType=VARCHAR},
+			</if>
+			<if test="attr1 != null">
+				attr1 = #{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				attr2 = #{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				attr3 = #{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				attr4 = #{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				attr5 = #{attr5,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where question_id = #{questionId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.Question">
+		update question
+		set cate_id = #{cateId,jdbcType=INTEGER},
+		cate_name = #{cateName,jdbcType=VARCHAR},
+		skill_id = #{skillId,jdbcType=INTEGER},
+		skill_name = #{skillName,jdbcType=VARCHAR},
+		question_title = #{questionTitle,jdbcType=VARCHAR},
+		question_difficulty = #{questionDifficulty,jdbcType=INTEGER},
+		question_collect = #{questionCollect,jdbcType=INTEGER},
+		question_answer = #{questionAnswer,jdbcType=VARCHAR},
+		A = #{a,jdbcType=VARCHAR},
+		B = #{b,jdbcType=VARCHAR},
+		C = #{c,jdbcType=VARCHAR},
+		D = #{d,jdbcType=VARCHAR},
+		question_content = #{questionContent,jdbcType=VARCHAR},
+		attr1 = #{attr1,jdbcType=VARCHAR},
+		attr2 = #{attr2,jdbcType=VARCHAR},
+		attr3 = #{attr3,jdbcType=VARCHAR},
+		attr4 = #{attr4,jdbcType=VARCHAR},
+		attr5 = #{attr5,jdbcType=VARCHAR}
+		where question_id = #{questionId,jdbcType=INTEGER}
+	</update>
+	<!-- 查找所有题目 -->
+	<select id="selectAllQuestion" resultMap="BaseResultMap">
+		select * from
+		question
+		LIMIT 10
+	</select>
+	<!-- 查找所有题目 -->
+	<select id="selectCollectQuestion" resultMap="BaseResultMap">
+		select * from
+		question
+		where question_collect!=0 
+		LIMIT 10
+	</select>
+	
+	<!-- getAllQuestion -->
+	<select id="getAllQuestion" resultMap="BaseResultMap">
+		select * from
+		question
+	</select>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.AnswerDao">
+  <resultMap id="BaseResultMap" type="com.kexinxin.bean.Answer">
+    <id column="answer_id" jdbcType="INTEGER" property="answerId" />
+    <result column="question_id" jdbcType="INTEGER" property="questionId" />
+    <result column="answer_content" jdbcType="VARCHAR" property="answerContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    answer_id, question_id, answer_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from answer
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from answer
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kexinxin.bean.Answer">
+    insert into answer (answer_id, question_id, answer_content
+      )
+    values (#{answerId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER}, #{answerContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kexinxin.bean.Answer">
+    insert into answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="answerId != null">
+        answer_id,
+      </if>
+      <if test="questionId != null">
+        question_id,
+      </if>
+      <if test="answerContent != null">
+        answer_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="answerId != null">
+        #{answerId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null">
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="answerContent != null">
+        #{answerContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.Answer">
+    update answer
+    <set>
+      <if test="questionId != null">
+        question_id = #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="answerContent != null">
+        answer_content = #{answerContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.Answer">
+    update answer
+    set question_id = #{questionId,jdbcType=INTEGER},
+      answer_content = #{answerContent,jdbcType=VARCHAR}
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </update>
+</mapper>

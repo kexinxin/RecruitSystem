@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.SearchPathDao">
+  <resultMap id="BaseResultMap" type="com.kexinxin.bean.SearchPath">
+    <id column="bn_id" jdbcType="INTEGER" property="bnId" />
+    <result column="start_question_id" jdbcType="INTEGER" property="startQuestionId" />
+    <result column="end_question_id" jdbcType="INTEGER" property="endQuestionId" />
+    <result column="time" jdbcType="INTEGER" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bn_id, start_question_id, end_question_id, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from search_path
+    where bn_id = #{bnId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from search_path
+    where bn_id = #{bnId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kexinxin.bean.SearchPath">
+    insert into search_path (bn_id, start_question_id, end_question_id, 
+      time)
+    values (#{bnId,jdbcType=INTEGER}, #{startQuestionId,jdbcType=INTEGER}, #{endQuestionId,jdbcType=INTEGER}, 
+      #{time,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kexinxin.bean.SearchPath">
+    insert into search_path
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bnId != null">
+        bn_id,
+      </if>
+      <if test="startQuestionId != null">
+        start_question_id,
+      </if>
+      <if test="endQuestionId != null">
+        end_question_id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bnId != null">
+        #{bnId,jdbcType=INTEGER},
+      </if>
+      <if test="startQuestionId != null">
+        #{startQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="endQuestionId != null">
+        #{endQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.SearchPath">
+    update search_path
+    <set>
+      <if test="startQuestionId != null">
+        start_question_id = #{startQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="endQuestionId != null">
+        end_question_id = #{endQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bn_id = #{bnId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.SearchPath">
+    update search_path
+    set start_question_id = #{startQuestionId,jdbcType=INTEGER},
+      end_question_id = #{endQuestionId,jdbcType=INTEGER},
+      time = #{time,jdbcType=INTEGER}
+    where bn_id = #{bnId,jdbcType=INTEGER}
+  </update>
+</mapper>

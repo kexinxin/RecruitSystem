@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.ExamDao">
+  <resultMap id="BaseResultMap" type="com.kexinxin.bean.Exam">
+    <id column="exam_id" jdbcType="INTEGER" property="examId" />
+    <result column="exam_name" jdbcType="VARCHAR" property="examName" />
+    <result column="exam_difficulty" jdbcType="VARCHAR" property="examDifficulty" />
+    <result column="exam_question_type" jdbcType="VARCHAR" property="examQuestionType" />
+    <result column="exam_skill" jdbcType="VARCHAR" property="examSkill" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    exam_id, exam_name, exam_difficulty, exam_question_type, exam_skill, position_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from exam
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from exam
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kexinxin.bean.Exam">
+    insert into exam (exam_id, exam_name, exam_difficulty, 
+      exam_question_type, exam_skill, position_id
+      )
+    values (#{examId,jdbcType=INTEGER}, #{examName,jdbcType=VARCHAR}, #{examDifficulty,jdbcType=VARCHAR}, 
+      #{examQuestionType,jdbcType=VARCHAR}, #{examSkill,jdbcType=VARCHAR}, #{positionId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kexinxin.bean.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="examId != null">
+        exam_id,
+      </if>
+      <if test="examName != null">
+        exam_name,
+      </if>
+      <if test="examDifficulty != null">
+        exam_difficulty,
+      </if>
+      <if test="examQuestionType != null">
+        exam_question_type,
+      </if>
+      <if test="examSkill != null">
+        exam_skill,
+      </if>
+      <if test="positionId != null">
+        position_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="examId != null">
+        #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="examName != null">
+        #{examName,jdbcType=VARCHAR},
+      </if>
+      <if test="examDifficulty != null">
+        #{examDifficulty,jdbcType=VARCHAR},
+      </if>
+      <if test="examQuestionType != null">
+        #{examQuestionType,jdbcType=VARCHAR},
+      </if>
+      <if test="examSkill != null">
+        #{examSkill,jdbcType=VARCHAR},
+      </if>
+      <if test="positionId != null">
+        #{positionId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.Exam">
+    update exam
+    <set>
+      <if test="examName != null">
+        exam_name = #{examName,jdbcType=VARCHAR},
+      </if>
+      <if test="examDifficulty != null">
+        exam_difficulty = #{examDifficulty,jdbcType=VARCHAR},
+      </if>
+      <if test="examQuestionType != null">
+        exam_question_type = #{examQuestionType,jdbcType=VARCHAR},
+      </if>
+      <if test="examSkill != null">
+        exam_skill = #{examSkill,jdbcType=VARCHAR},
+      </if>
+      <if test="positionId != null">
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.Exam">
+    update exam
+    set exam_name = #{examName,jdbcType=VARCHAR},
+      exam_difficulty = #{examDifficulty,jdbcType=VARCHAR},
+      exam_question_type = #{examQuestionType,jdbcType=VARCHAR},
+      exam_skill = #{examSkill,jdbcType=VARCHAR},
+      position_id = #{positionId,jdbcType=INTEGER}
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </update>
+</mapper>

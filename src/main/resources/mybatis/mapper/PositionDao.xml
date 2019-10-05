@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.PositionDao">
+	<resultMap id="BaseResultMap" type="com.kexinxin.bean.Position">
+		<id column="position_id" jdbcType="INTEGER" property="positionId" />
+		<result column="position_name" jdbcType="VARCHAR" property="positionName" />
+		<result column="position_desc" jdbcType="VARCHAR" property="positionDesc" />
+		<result column="position_request" jdbcType="VARCHAR" property="positionRequest" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		position_id, position_name, position_desc, position_request
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from position
+		where position_id = #{positionId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from position
+		where position_id = #{positionId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.kexinxin.bean.Position">
+		insert into position (position_id, position_name, position_desc,
+		position_request)
+		values (#{positionId,jdbcType=INTEGER}, #{positionName,jdbcType=VARCHAR},
+		#{positionDesc,jdbcType=VARCHAR},
+		#{positionRequest,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.kexinxin.bean.Position">
+		insert into position
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="positionId != null">
+				position_id,
+			</if>
+			<if test="positionName != null">
+				position_name,
+			</if>
+			<if test="positionDesc != null">
+				position_desc,
+			</if>
+			<if test="positionRequest != null">
+				position_request,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="positionId != null">
+				#{positionId,jdbcType=INTEGER},
+			</if>
+			<if test="positionName != null">
+				#{positionName,jdbcType=VARCHAR},
+			</if>
+			<if test="positionDesc != null">
+				#{positionDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="positionRequest != null">
+				#{positionRequest,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.Position">
+		update position
+		<set>
+			<if test="positionName != null">
+				position_name = #{positionName,jdbcType=VARCHAR},
+			</if>
+			<if test="positionDesc != null">
+				position_desc = #{positionDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="positionRequest != null">
+				position_request = #{positionRequest,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where position_id = #{positionId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.Position">
+		update position
+		set position_name = #{positionName,jdbcType=VARCHAR},
+		position_desc = #{positionDesc,jdbcType=VARCHAR},
+		position_request = #{positionRequest,jdbcType=VARCHAR}
+		where position_id = #{positionId,jdbcType=INTEGER}
+	</update>
+	<select id="selectAllPosition" resultMap="BaseResultMap">
+		select * from
+		position
+		LIMIT 10
+	</select>
+</mapper>

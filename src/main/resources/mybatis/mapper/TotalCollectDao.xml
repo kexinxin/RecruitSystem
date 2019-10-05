@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.TotalCollectDao">
+  <resultMap id="BaseResultMap" type="com.kexinxin.bean.TotalCollect">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="total_collect" jdbcType="INTEGER" property="totalCollect" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, total_collect
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from total_collect
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from total_collect
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kexinxin.bean.TotalCollect">
+    insert into total_collect (id, total_collect)
+    values (#{id,jdbcType=INTEGER}, #{totalCollect,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kexinxin.bean.TotalCollect">
+    insert into total_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="totalCollect != null">
+        total_collect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="totalCollect != null">
+        #{totalCollect,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.TotalCollect">
+    update total_collect
+    <set>
+      <if test="totalCollect != null">
+        total_collect = #{totalCollect,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.TotalCollect">
+    update total_collect
+    set total_collect = #{totalCollect,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/view/common/footer.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/common/navbar.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/exam/exam.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/home/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/position/position.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/question/questionList.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/question/questionManage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/user/login.jsp=UTF-8
+encoding/<project>=UTF-8

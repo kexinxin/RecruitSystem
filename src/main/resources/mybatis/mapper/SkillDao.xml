@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.SkillDao">
+  <resultMap id="BaseResultMap" type="com.kexinxin.bean.Skill">
+    <id column="skill_id" jdbcType="INTEGER" property="skillId" />
+    <result column="father_id" jdbcType="INTEGER" property="fatherId" />
+    <result column="skill_name" jdbcType="VARCHAR" property="skillName" />
+    <result column="collect" jdbcType="INTEGER" property="collect" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    skill_id, father_id, skill_name, collect
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from skill
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from skill
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kexinxin.bean.Skill">
+    insert into skill (skill_id, father_id, skill_name, 
+      collect)
+    values (#{skillId,jdbcType=INTEGER}, #{fatherId,jdbcType=INTEGER}, #{skillName,jdbcType=VARCHAR}, 
+      #{collect,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kexinxin.bean.Skill">
+    insert into skill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="skillId != null">
+        skill_id,
+      </if>
+      <if test="fatherId != null">
+        father_id,
+      </if>
+      <if test="skillName != null">
+        skill_name,
+      </if>
+      <if test="collect != null">
+        collect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="skillId != null">
+        #{skillId,jdbcType=INTEGER},
+      </if>
+      <if test="fatherId != null">
+        #{fatherId,jdbcType=INTEGER},
+      </if>
+      <if test="skillName != null">
+        #{skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="collect != null">
+        #{collect,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.Skill">
+    update skill
+    <set>
+      <if test="fatherId != null">
+        father_id = #{fatherId,jdbcType=INTEGER},
+      </if>
+      <if test="skillName != null">
+        skill_name = #{skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="collect != null">
+        collect = #{collect,jdbcType=INTEGER},
+      </if>
+    </set>
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.Skill">
+    update skill
+    set father_id = #{fatherId,jdbcType=INTEGER},
+      skill_name = #{skillName,jdbcType=VARCHAR},
+      collect = #{collect,jdbcType=INTEGER}
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查找所有技能 -->
+	<select id="selectAllSkill" resultMap="BaseResultMap">
+		select * from
+		skill 
+	</select>
+  
+</mapper>

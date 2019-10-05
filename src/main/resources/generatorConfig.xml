@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 数据库驱动包位置 -->
+	<classPathEntry
+		location="D:/Repositories/Maven/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar" />
+	<context id="context1">
+		<commentGenerator>  
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
+            <property name="suppressAllComments" value="true"/>  
+        </commentGenerator>
+		
+		<!-- 数据库链接URL、用户名、密码 -->
+		<jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/searchsystem" driverClass="com.mysql.jdbc.Driver"
+			password="" userId="root" />
+		
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetPackage="com.kexinxin.bean"
+			targetProject="Test1/src" />
+		
+		<!-- 生成的映射文件包名和位置 -->
+		<sqlMapGenerator targetPackage="com.kexinxin.mapper" targetProject="Test1/src" />
+		
+		<!-- 生成DAO的包名和位置 -->	
+		<javaClientGenerator targetPackage="com.kexinxin.dao"
+			targetProject="Test1/src" type="XMLMAPPER" />
+		
+		<!-- 要生成的那些表(更改tableName 和domainObjectName 就可以了) -->
+		<table tableName="answer" mapperName="AnswerDao"  domainObjectName="Answer"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="category" mapperName="CategoryDao"  domainObjectName="Category"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="comment" mapperName="Comment"  domainObjectName="Comment"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="exam" mapperName="ExamDao"  domainObjectName="Exam"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="exam_question" mapperName="ExamQuestionDao"  domainObjectName="ExamQuestion"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="history" mapperName="HistoryDao"  domainObjectName="History"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="position" mapperName="PositionDao"  domainObjectName="Position"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="question" mapperName="QuestionDao"  domainObjectName="Question"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="question_net" mapperName="QuestionNetDao"  domainObjectName="QuestionNet"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="search_path" mapperName="SearchPathDao"  domainObjectName="SearchPath"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="skill" mapperName="SkillDao"  domainObjectName="Skill"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="stop_word" mapperName="StopWordDao"  domainObjectName="StopWord"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+		<table tableName="total_collect" mapperName="TotalCollectDao"  domainObjectName="TotalCollect"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" >
+		</table>
+	</context>
+</generatorConfiguration>

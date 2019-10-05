@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexinxin.dao.QuestionNetDao">
+	<resultMap id="BaseResultMap" type="com.kexinxin.bean.QuestionNet">
+		<id column="question_net_id" jdbcType="INTEGER" property="questionNetId" />
+		<result column="question_title" jdbcType="VARCHAR" property="questionTitle" />
+		<result column="skill_name" jdbcType="VARCHAR" property="skillName" />
+		<result column="question_difficulty" jdbcType="VARCHAR"
+			property="questionDifficulty" />
+		<result column="cate_name" jdbcType="VARCHAR" property="cateName" />
+		<result column="A" jdbcType="VARCHAR" property="a" />
+		<result column="B" jdbcType="VARCHAR" property="b" />
+		<result column="C" jdbcType="VARCHAR" property="c" />
+		<result column="D" jdbcType="VARCHAR" property="d" />
+		<result column="question_content" jdbcType="VARCHAR" property="questionContent" />
+		<result column="attr1" jdbcType="VARCHAR" property="attr1" />
+		<result column="attr2" jdbcType="VARCHAR" property="attr2" />
+		<result column="attr3" jdbcType="VARCHAR" property="attr3" />
+		<result column="attr4" jdbcType="VARCHAR" property="attr4" />
+		<result column="attr5" jdbcType="VARCHAR" property="attr5" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		question_net_id, question_title, skill_name, question_difficulty, cate_name, A, B,
+		C, D, question_content, attr1, attr2, attr3, attr4, attr5
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from question_net
+		where question_net_id = #{questionNetId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from question_net
+		where question_net_id = #{questionNetId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.kexinxin.bean.QuestionNet">
+		insert into question_net (question_net_id, question_title, skill_name,
+		question_difficulty, cate_name, A,
+		B, C, D, question_content,
+		attr1, attr2, attr3,
+		attr4, attr5)
+		values (#{questionNetId,jdbcType=INTEGER},
+		#{questionTitle,jdbcType=VARCHAR}, #{skillName,jdbcType=VARCHAR},
+		#{questionDifficulty,jdbcType=VARCHAR}, #{cateName,jdbcType=VARCHAR},
+		#{a,jdbcType=VARCHAR},
+		#{b,jdbcType=VARCHAR}, #{c,jdbcType=VARCHAR}, #{d,jdbcType=VARCHAR},
+		#{questionContent,jdbcType=VARCHAR},
+		#{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR}, #{attr3,jdbcType=VARCHAR},
+		#{attr4,jdbcType=VARCHAR}, #{attr5,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.kexinxin.bean.QuestionNet">
+		insert into question_net
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="questionNetId != null">
+				question_net_id,
+			</if>
+			<if test="questionTitle != null">
+				question_title,
+			</if>
+			<if test="skillName != null">
+				skill_name,
+			</if>
+			<if test="questionDifficulty != null">
+				question_difficulty,
+			</if>
+			<if test="cateName != null">
+				cate_name,
+			</if>
+			<if test="a != null">
+				A,
+			</if>
+			<if test="b != null">
+				B,
+			</if>
+			<if test="c != null">
+				C,
+			</if>
+			<if test="d != null">
+				D,
+			</if>
+			<if test="questionContent != null">
+				question_content,
+			</if>
+			<if test="attr1 != null">
+				attr1,
+			</if>
+			<if test="attr2 != null">
+				attr2,
+			</if>
+			<if test="attr3 != null">
+				attr3,
+			</if>
+			<if test="attr4 != null">
+				attr4,
+			</if>
+			<if test="attr5 != null">
+				attr5,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="questionNetId != null">
+				#{questionNetId,jdbcType=INTEGER},
+			</if>
+			<if test="questionTitle != null">
+				#{questionTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="skillName != null">
+				#{skillName,jdbcType=VARCHAR},
+			</if>
+			<if test="questionDifficulty != null">
+				#{questionDifficulty,jdbcType=VARCHAR},
+			</if>
+			<if test="cateName != null">
+				#{cateName,jdbcType=VARCHAR},
+			</if>
+			<if test="a != null">
+				#{a,jdbcType=VARCHAR},
+			</if>
+			<if test="b != null">
+				#{b,jdbcType=VARCHAR},
+			</if>
+			<if test="c != null">
+				#{c,jdbcType=VARCHAR},
+			</if>
+			<if test="d != null">
+				#{d,jdbcType=VARCHAR},
+			</if>
+			<if test="questionContent != null">
+				#{questionContent,jdbcType=VARCHAR},
+			</if>
+			<if test="attr1 != null">
+				#{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				#{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				#{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				#{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				#{attr5,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.kexinxin.bean.QuestionNet">
+		update question_net
+		<set>
+			<if test="questionTitle != null">
+				question_title = #{questionTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="skillName != null">
+				skill_name = #{skillName,jdbcType=VARCHAR},
+			</if>
+			<if test="questionDifficulty != null">
+				question_difficulty = #{questionDifficulty,jdbcType=VARCHAR},
+			</if>
+			<if test="cateName != null">
+				cate_name = #{cateName,jdbcType=VARCHAR},
+			</if>
+			<if test="a != null">
+				A = #{a,jdbcType=VARCHAR},
+			</if>
+			<if test="b != null">
+				B = #{b,jdbcType=VARCHAR},
+			</if>
+			<if test="c != null">
+				C = #{c,jdbcType=VARCHAR},
+			</if>
+			<if test="d != null">
+				D = #{d,jdbcType=VARCHAR},
+			</if>
+			<if test="questionContent != null">
+				question_content = #{questionContent,jdbcType=VARCHAR},
+			</if>
+			<if test="attr1 != null">
+				attr1 = #{attr1,jdbcType=VARCHAR},
+			</if>
+			<if test="attr2 != null">
+				attr2 = #{attr2,jdbcType=VARCHAR},
+			</if>
+			<if test="attr3 != null">
+				attr3 = #{attr3,jdbcType=VARCHAR},
+			</if>
+			<if test="attr4 != null">
+				attr4 = #{attr4,jdbcType=VARCHAR},
+			</if>
+			<if test="attr5 != null">
+				attr5 = #{attr5,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where question_net_id = #{questionNetId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.kexinxin.bean.QuestionNet">
+		update question_net
+		set question_title = #{questionTitle,jdbcType=VARCHAR},
+		skill_name = #{skillName,jdbcType=VARCHAR},
+		question_difficulty = #{questionDifficulty,jdbcType=VARCHAR},
+		cate_name = #{cateName,jdbcType=VARCHAR},
+		A = #{a,jdbcType=VARCHAR},
+		B = #{b,jdbcType=VARCHAR},
+		C = #{c,jdbcType=VARCHAR},
+		D = #{d,jdbcType=VARCHAR},
+		question_content = #{questionContent,jdbcType=VARCHAR},
+		attr1 = #{attr1,jdbcType=VARCHAR},
+		attr2 = #{attr2,jdbcType=VARCHAR},
+		attr3 = #{attr3,jdbcType=VARCHAR},
+		attr4 = #{attr4,jdbcType=VARCHAR},
+		attr5 = #{attr5,jdbcType=VARCHAR}
+		where question_net_id = #{questionNetId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 查找所有题目 -->
+	<select id="selectAllQuestionNet" resultMap="BaseResultMap">
+		select * from
+		question_net
+	</select>
+
+</mapper>
