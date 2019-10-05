@@ -16,7 +16,7 @@
 		<!-- log4j版本号 -->
 		<log4j.version>1.2.14</log4j.version>
 		<!-- lucene版本号 -->
-		<lucene.version>4.8.1</lucene.version>
+		<lucene.version>8.2.0</lucene.version>
 		<!-- lingpipe版本号 -->
 		<lingpipe.version>4.1.0</lingpipe.version>
 		<!-- webCollector版本号 -->
