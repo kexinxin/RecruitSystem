@@ -1,1 +1,2 @@
 #SearchSystem
+基于SSM实现的招聘考试系统。试题爬取通过WebCollector爬虫框架网上爬取试题，通过Lucene全文搜索试题，通过遗传算法生成试卷
