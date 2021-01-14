@@ -34,7 +34,7 @@
 		<!-- 文件上传下载 -->
 		<fileupload.version>1.3</fileupload.version>
 		<!-- poi框架 -->
-		<poi.version>3.8</poi.version>
+		<poi.version>4.1.2</poi.version>
 		<!-- Hadoop框架 -->
 		<hadoop.version>2.7.2</hadoop.version>
 		<!-- 作业调度框架 -->
