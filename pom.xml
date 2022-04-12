@@ -36,7 +36,7 @@
 		<!-- poi框架 -->
 		<poi.version>3.8</poi.version>
 		<!-- Hadoop框架 -->
-		<hadoop.version>2.7.2</hadoop.version>
+		<hadoop.version>3.2.3</hadoop.version>
 		<!-- 作业调度框架 -->
 		<quartz.version>2.2.1</quartz.version>
 	</properties>
